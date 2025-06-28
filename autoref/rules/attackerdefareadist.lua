@@ -29,6 +29,7 @@ AttackerDefAreaDist.possibleRefStates = {
 	Stop = true,
 	Indirect = true,
 	Direct = true,
+	Ball = true,
 }
 AttackerDefAreaDist.shouldAlwaysExecute = true
 AttackerDefAreaDist.runOnInvisibleBall = true
@@ -43,7 +44,7 @@ end
 function AttackerDefAreaDist:occuring()
 
 	if self.World.Time - self.startTime < BUFFER_TIME then
-		return
+		--return
 	end
 
 	for offense, defense in pairs({Blue = "Yellow", Yellow = "Blue"}) do
