@@ -48,16 +48,16 @@ function BallPlacementInterference:occuring()
 		for _, robot in ipairs(self.World[opponent.."Robots"]) do
 			local dist = robot.pos:distanceToLineSegment(self.World.Ball.pos, self.World.BallPlacementPos)
 			if dist < 0.5 + robot.radius then
-				if not self.inRangeStartTimes[robot] then
-					self.inRangeStartTimes[robot] = self.World.Time
-				else
-					local time = self.World.Time - self.inRangeStartTimes[robot]
-					if time > 2 and not self.robotsInThisStop[robot] then
+--				if not self.inRangeStartTimes[robot] then
+--					self.inRangeStartTimes[robot] = self.World.Time
+--				else
+--					local time = self.World.Time - self.inRangeStartTimes[robot]
+--					if time > 2 and not self.robotsInThisStop[robot] then
 						self.robotsInThisStop[robot] = true
 						local event = Event.ballPlacementInterference(robot.isYellow, robot.id, robot.pos)
 						return event
-					end
-				end
+--					end
+--				end
 			else
 				self.inRangeStartTimes[robot] = nil
 			end
